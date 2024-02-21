@@ -10,8 +10,9 @@
 
 #define PY_SSIZE_T_CLEAN
 #include <Python.h>
+#include <math.h>
 
-#include "utf8_string.h"
+#include "utf8_string.h" // do we really need it?
 #include "uint_list.h"
 
 /**
@@ -26,8 +27,12 @@
  * Implementation details user should be aware of:
  * For performance and simplicity reasons, the function only supports
  * set of unicode ascii characters in range [U+0000, U+007F] and some 
- * cyrillic 
+ * cyrillic characters in range [U+0400, U+04FF]
+ * Anything outside those ranges will be ignored, and won't 
+ * affect the calculations
  */
 static PyObject *shannon_ch(PyObject *self, PyObject *args);
+
+static PyObject *jaro_similarity(PyObject *self, PyObject *args);
 
 #endif

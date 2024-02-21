@@ -1,9 +1,11 @@
-from distutils.core import setup, Extension
+from setuptools import Extension, setup
 
-module1 = Extension('nlptools',
-                    sources = ['nlptools.c', 'utf8_string.c', 'uint_list.c'])
-
-setup (name = 'nlptools',
-       version = '1.0',
-       description = 'This is a demo package',
-       ext_modules = [module1])
+setup(
+    name = 'rapidlp',
+    version = '0.1',
+    description = 'This is a demo package',
+    ext_modules=[
+        Extension('rapidlp',
+                  sources=['rapidlp.c', 'utf8_string.c', 'uint_list.c']),
+    ]
+)
